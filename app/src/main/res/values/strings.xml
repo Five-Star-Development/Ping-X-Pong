@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">ping x pong</string>
+    <string name="verify_description">Ping X Pong will send an SMS to verify your phone number. Select your country code and enter your phone number</string>
+    <string name="verify">Verify</string>
+    <string name="verify_headline">Verify your phone number</string>
+    <string name="phone_number">Phone number</string>
+</resources>
