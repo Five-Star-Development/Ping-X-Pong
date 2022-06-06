@@ -2,6 +2,7 @@ package dev.five_star.pingpong
 
 import android.telephony.TelephonyManager
 import android.util.Log
+import android.widget.Toast
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -18,8 +19,7 @@ data class VerifyUiState(
     var countryCode: String = "de"
 ) {
     fun getPhoneNumber() : String {
-        val correctNumber = number.toInt().toString()
-        return "$prefix$correctNumber"
+        return "$prefix$number"
     }
 }
 
@@ -60,15 +60,11 @@ class VerifyViewModel(private val telephonyManager: TelephonyManager) : ViewMode
 
     fun setNumber(number: String) {
         _uiState.value = uiState.value.copy(
-            number = number
+            number = number.trimStart('0')
         )
     }
 
     fun verifyNumber() {
-        val correctNumber = uiState.value.number.toInt().toString()
-        _uiState.value = uiState.value.copy(
-            number = correctNumber
-        )
         Log.d(TAG, uiState.value.getPhoneNumber())
     }
 
